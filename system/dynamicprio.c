@@ -3,14 +3,8 @@
 #include <xinu.h>
 
 void dynamicPrio() {
-  /* dumping the proc tab here allows you to see which process
-  * is CURR running in the proctab printout, otherwise
-  * this could be printed in main.c to view the priorities
-  * while the current running process would always be main */
-  /*dumpProctab(0); */
-
   /* created a single proctab struct and utilized chprio function
-  * to update the priority. Saves on time and space */
+  * to update the priority. */
   struct procent *p;
 
   int32 i = 0;
@@ -31,7 +25,8 @@ void dynamicPrio() {
       }
       chprio(i, newprio);
     }
-
+    /* reset all process cpuhog to 0 */
+    p->cpuhog = 0;
   }
   resched();
 }

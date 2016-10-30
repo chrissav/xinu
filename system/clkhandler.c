@@ -28,6 +28,16 @@ void	clkhandler()
 
 	count1000--;
 
+  /* print the proctab twice a second */
+
+	if(count1000 == 300) {
+		dumpProctab(0);
+	}
+
+	if(count1000 == 700) {
+		dumpProctab(0);
+	}
+
 	/* After 1 sec, increment clktime */
 
 	if(count1000 == 0) {
@@ -56,6 +66,17 @@ void	clkhandler()
 
 	if((--preempt) == 0) {
 		preempt = QUANTUM;
+
+		/* process reached the end of it's time slice */
+		struct procent *p;
+		p = &proctab[currpid];
+		if (p->cpuhog == 1) {
+			p->cpuhog = 2;
+		}
+		if (p->cpuhog == 0) {
+			p->cpuhog = 1;
+		}
+
 		resched();
 	}
 }

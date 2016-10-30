@@ -45,10 +45,10 @@ pid32	currpid;		/* ID of currently executing process	*/
  */
 
 void	nulluser()
-{	
+{
 	struct	memblk	*memptr;	/* Ptr to memory block		*/
 	uint32	free_mem;		/* Total amount of free memory	*/
-	
+
 	/* Initialize the system */
 
 	sysinit();
@@ -122,7 +122,7 @@ local process	startup(void)
 		sprintf(str, "%d.%d.%d.%d",
 			(ipaddr>>24)&0xff, (ipaddr>>16)&0xff,
 			(ipaddr>>8)&0xff,        ipaddr&0xff);
-	
+
 		kprintf("Obtained IP address  %s   (0x%08x)\n", str,
 								ipaddr);
 	}
@@ -159,9 +159,9 @@ static	void	sysinit()
 	/* Initialize the interrupt vectors */
 
 	initevec();
-	
+
 	/* Initialize free memory list */
-	
+
 	meminit();
 
 	/* Initialize system variables */
@@ -184,7 +184,7 @@ static	void	sysinit()
 		prptr->prprio = 0;
 	}
 
-	/* Initialize the Null process entry */	
+	/* Initialize the Null process entry */
 
 	prptr = &proctab[NULLPROC];
 	prptr->prstate = PR_CURR;
@@ -194,7 +194,7 @@ static	void	sysinit()
 	prptr->prstklen = NULLSTK;
 	prptr->prstkptr = 0;
 	currpid = NULLPROC;
-	
+
 	/* Initialize semaphores */
 
 	for (i = 0; i < NSEM; i++) {

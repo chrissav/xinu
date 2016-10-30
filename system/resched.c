@@ -14,7 +14,6 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 	struct procent *ptnew;	/* Ptr to table entry for new process	*/
 
 	/* If rescheduling is deferred, record attempt and return */
-
 	if (Defer.ndefers > 0) {
 		Defer.attempt = TRUE;
 		return;
@@ -26,13 +25,10 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 
 	if (ptold->prstate == PR_CURR) {  /* Process remains eligible */
 		if (ptold->prprio > firstkey(readylist)) {
-			ptold->cpuhog = 2;
 			return;
 		}
 
 		/* Old process will no longer remain current */
-
-		ptold->cpuhog = 0;
 		ptold->prstate = PR_READY;
 		insert(currpid, readylist, ptold->prprio);
 	}
@@ -42,6 +38,8 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 	currpid = dequeue(readylist);
 	ptnew = &proctab[currpid];
 	ptnew->prstate = PR_CURR;
+	/* process is going to get some cpu time here */
+	ptnew->cpuhog = 1;
 	preempt = QUANTUM;		/* Reset time slice for process	*/
 	ctxsw(&ptold->prstkptr, &ptnew->prstkptr);
 

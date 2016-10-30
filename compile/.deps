@@ -49,8 +49,7 @@ clkhandler.o: ../system/clkhandler.c ../include/xinu.h \
  ../include/icmp.h ../include/tftp.h ../include/name.h ../include/shell.h \
  ../include/date.h ../include/prototypes.h ../include/delay.h \
  ../include/stdio.h ../include/string.h ../include/am335x_control.h \
- ../include/am335x_eth.h ../include/am335x_watchdog.h ../include/armv7a.h \
- ../system/dynamicprio.c
+ ../include/am335x_eth.h ../include/am335x_watchdog.h ../include/armv7a.h
 clkinit.o: ../system/clkinit.c ../include/xinu.h ../include/kernel.h \
  ../include/conf.h ../include/process.h ../include/queue.h \
  ../include/resched.h ../include/semaphore.h ../include/memory.h \
@@ -429,7 +428,7 @@ main.o: ../system/main.c ../include/xinu.h ../include/kernel.h \
  ../include/date.h ../include/prototypes.h ../include/delay.h \
  ../include/stdio.h ../include/string.h ../include/am335x_control.h \
  ../include/am335x_eth.h ../include/am335x_watchdog.h ../include/armv7a.h \
- ../system/dumpproctab.c
+ ../include/system.dumpproctab.c ../include/system/dynamicprio.c
 mark.o: ../system/mark.c ../include/xinu.h ../include/kernel.h \
  ../include/conf.h ../include/process.h ../include/queue.h \
  ../include/resched.h ../include/semaphore.h ../include/memory.h \
@@ -2475,7 +2474,8 @@ clkhandler.o: ../system/clkhandler.c ../include/xinu.h \
  ../include/icmp.h ../include/tftp.h ../include/name.h ../include/shell.h \
  ../include/date.h ../include/prototypes.h ../include/delay.h \
  ../include/stdio.h ../include/string.h ../include/am335x_control.h \
- ../include/am335x_eth.h ../include/am335x_watchdog.h ../include/armv7a.h
+ ../include/am335x_eth.h ../include/am335x_watchdog.h ../include/armv7a.h \
+ ../include/dynamicprio.c
 clkinit.o: ../system/clkinit.c ../include/xinu.h ../include/kernel.h \
  ../include/conf.h ../include/process.h ../include/queue.h \
  ../include/resched.h ../include/semaphore.h ../include/memory.h \
@@ -7281,17 +7281,3 @@ start.o: ../system/start.S ../include/armv7a.h
 ctxsw.o: ../system/ctxsw.S
 intr.o: ../system/intr.S ../include/armv7a.h
 start.o: ../system/start.S ../include/armv7a.h
-dumpproctab.o: ../system/kprintf.c ../include/xinu.h ../include/kernel.h \
- ../include/conf.h ../include/process.h ../include/queue.h \
- ../include/resched.h ../include/semaphore.h ../include/memory.h \
- ../include/bufpool.h ../include/clock.h ../include/mark.h \
- ../include/ports.h ../include/uart.h ../include/tty.h \
- ../include/device.h ../include/interrupt.h ../include/file.h \
- ../include/rfilesys.h ../include/rdisksys.h ../include/lfilesys.h \
- ../include/spi.h ../include/ether.h ../include/gpio.h ../include/net.h \
- ../include/ip.h ../include/arp.h ../include/udp.h ../include/dhcp.h \
- ../include/icmp.h ../include/tftp.h ../include/name.h ../include/shell.h \
- ../include/date.h ../include/prototypes.h ../include/delay.h \
- ../include/stdio.h ../include/string.h ../include/am335x_control.h \
- ../include/am335x_eth.h ../include/am335x_watchdog.h ../include/armv7a.h \
- ../include/stdarg.h
