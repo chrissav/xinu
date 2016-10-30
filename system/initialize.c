@@ -91,7 +91,7 @@ void	nulluser()
 	/*  something to run when no other process is ready to execute)	*/
 
 	while (TRUE) {
-		;		/* Do nothing */
+		yield();		/* Do nothing */
 	}
 
 }
