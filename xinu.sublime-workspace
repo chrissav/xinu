@@ -1,0 +1,1060 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"dump",
+				"dumpProctab"
+			],
+			[
+				"low",
+				"low_prio"
+			],
+			[
+				"read",
+				"read_and_strip_file"
+			],
+			[
+				"dec",
+				"decrypt_file_name"
+			],
+			[
+				"policy",
+				"policy_name"
+			],
+			[
+				"polic",
+				"policy_name"
+			],
+			[
+				"create",
+				"create_managed_policy"
+			],
+			[
+				"attr",
+				"attributes"
+			],
+			[
+				"list_polic",
+				"list_policy_versions"
+			],
+			[
+				"delete",
+				"delete_resource"
+			],
+			[
+				"remove",
+				"remove_user_from_group"
+			],
+			[
+				"reour",
+				"resource_name"
+			],
+			[
+				"detach",
+				"detach_policy"
+			],
+			[
+				"add",
+				"Adds"
+			],
+			[
+				"delete_role",
+				"delete_role_policy"
+			],
+			[
+				"update",
+				"update_trust_policy"
+			],
+			[
+				"list_all_",
+				"list_all_managed_policies_in_iam"
+			],
+			[
+				"policy_name",
+				"policy_name"
+			],
+			[
+				"managed",
+				"managed_policies"
+			],
+			[
+				"compare",
+				"compare_entity_managed_policy_list"
+			],
+			[
+				"manage",
+				"managed_policy"
+			],
+			[
+				"resource",
+				"resource_name"
+			],
+			[
+				"diff",
+				"diff_data_to_remove"
+			],
+			[
+				"diff_data_to",
+				"diff_data_to_add"
+			],
+			[
+				"diff_data",
+				"diff_data_to_add"
+			],
+			[
+				"entity",
+				"entity_name"
+			],
+			[
+				"prof",
+				"profile_name"
+			],
+			[
+				"role",
+				"role_name"
+			],
+			[
+				"mana",
+				"managed_policy"
+			],
+			[
+				"entit",
+				"entity_name"
+			],
+			[
+				"add_profile",
+				"add_profile_managed_policy"
+			],
+			[
+				"pol",
+				"policy_document"
+			],
+			[
+				"poli",
+				"policy_name"
+			],
+			[
+				"profile",
+				"profile"
+			],
+			[
+				"import",
+				"import_from_iam"
+			],
+			[
+				"export",
+				"export_to_files"
+			],
+			[
+				"add_profi",
+				"add_profile_policy"
+			],
+			[
+				"add_role",
+				"add_role_policy"
+			],
+			[
+				"iam",
+				"iam_data"
+			],
+			[
+				"add_group",
+				"add_group_policy"
+			],
+			[
+				"get",
+				"get_all_group_policies"
+			],
+			[
+				"file",
+				"file_data"
+			],
+			[
+				"user",
+				"user_name"
+			],
+			[
+				"group",
+				"group_name"
+			],
+			[
+				"list_all",
+				"list_all_managed_policies"
+			],
+			[
+				"users",
+				"users_in_list"
+			],
+			[
+				"policies",
+				"policies_in_list"
+			],
+			[
+				"policies_in",
+				"policies_in_iam"
+			],
+			[
+				"policie",
+				"policies_in_list"
+			],
+			[
+				"dryrun",
+				"dryrun_message"
+			],
+			[
+				"en",
+				"enc_directory"
+			],
+			[
+				"encry",
+				"encrypt_file_name"
+			],
+			[
+				"trust",
+				"trust_policy"
+			],
+			[
+				"lib",
+				"libmysqlclient-dev"
+			],
+			[
+				"sub",
+				"subscribers"
+			],
+			[
+				"high",
+				"high_flap_threshold"
+			],
+			[
+				"pd",
+				"pd_api_access_key"
+			],
+			[
+				"mongo",
+				"mongo_prod"
+			],
+			[
+				"De",
+				"DeleteObject"
+			],
+			[
+				"ec2",
+				"ec2_elbs"
+			],
+			[
+				"instance",
+				"instance_id"
+			],
+			[
+				"mono",
+				"mongo_primary_connection_check"
+			],
+			[
+				"rcp",
+				"rcp_dup"
+			],
+			[
+				"template",
+				"template_check_params"
+			],
+			[
+				"prod",
+				"prod_handlers"
+			],
+			[
+				"hier",
+				"hiera_packages"
+			],
+			[
+				"install",
+				"install_composer"
+			],
+			[
+				"open",
+				"openssh-server"
+			],
+			[
+				"key",
+				"key_to_find"
+			],
+			[
+				"last",
+				"puppet_last_run_check"
+			],
+			[
+				"zone",
+				"zone_records"
+			],
+			[
+				"mod",
+				"modified_files"
+			],
+			[
+				"mani",
+				"manifest"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "scheduler - finds which process is next\ncontext switcher (ctxw) - does the actual switching\n\nscheduler functions:\n- ready - puts a process in the ready queue\n- resched - finds the next process that's ready\n- ctxsw -\n- resched_cntrl\n-\n\nfor n processes how many processes can be on the ready queue?\nn-1\n\nwhy do we need a null process?\nresched is designed to only be able to switch from one process to another.  this way the OS never needs to check if a process is running.  keeps things simpler.  keeps something always \"scheduable\"\n\nwhat limitation is on the interrupt handler code? (since the null process can call interrupt handler)\ninterrupt handler can never block (start a process?)\nsince the null process can it would cause a problem\n\nHow does xinu know what process is running at any given time?\nCurrpid Global variable\n\n\nlook at wait()\nsignal()\n\nnull process can repeatedly call yield\n\nuse enqueue dequeue to pull process from the front and add to the back\n\nresched should still be called whenever\n\nnonpreemptive - you can not take the cpu away from a process\n\nif process B is \"ready\", and process A is running, B will go to the end of the list\n\nif null is running, it should be able to switch\n\nupdate null to use yield\n\nupdate resched\n - if I'm the null process AND there's something in the ready queue that can run\n if (ptold->prstate == PR_CURR) and currpid != 0\n\n\n\nLAB\n\n\n how to check priority once per second?\nclkhandler.c has an if statement that runs something every minute\nadd a function call there to recompute priorities here\n\n\nstart several processes that do different things\nand run them in main\nset one priority with a really high priority and watch it drop\nprint the process table in main\nbe careful - mains priority starts as 20 (default priority)\nyou can increase mains priority in the beginning\n\n\n",
+			"file": "/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week3/notes",
+			"file_size": 532,
+			"file_write_time": 131219160730000000,
+			"settings":
+			{
+				"buffer_size": 1821,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "system/resched.c",
+			"settings":
+			{
+				"buffer_size": 2003,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack_Backup/system/initialize.c",
+			"settings":
+			{
+				"buffer_size": 5910,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "compile/.vers_num",
+			"settings":
+			{
+				"buffer_size": 2,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "compile/version",
+			"settings":
+			{
+				"buffer_size": 69,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "system/main.c",
+			"settings":
+			{
+				"buffer_size": 1078,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack_Backup/system/main.c",
+			"settings":
+			{
+				"buffer_size": 548,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 368.0,
+		"last_filter": "settings",
+		"selected_items":
+		[
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"sublimelinter",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"sublime",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"copy",
+				"SublimeHighlight: copy to clipboard as RTF"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"copy as",
+				"SublimeHighlight: copy to clipboard as RTF"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 181.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu"
+	],
+	"file_history":
+	[
+		"/Users/csavadel/Library/Application Support/Sublime Text 3/Settings/SideBarEnhancements.json",
+		"/Users/csavadel/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/compile/.vers_num",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/system/main.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/system/main.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/.gitignore",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/README",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/include/process.h",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/system/dynamicprio.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/system/dumpproctab.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/system/clkhandler.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/config/y.tab.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week3/Savadel_Christine_Lab2/system/create.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/compile/.deps",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week3/Savadel_Christine_Lab2/README",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/system/clkhandler.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/compile/.deps",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/compile/.defs",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/system/resched.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/DESCRIPTION",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/include/clock.h",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/system/chprio.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/include/kernel.h",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu/cross_compiler/arm-none-eabi/include/inttypes.h",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/system/create.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/include/process.h",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/system/dumpproctab.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/include/prototypes.h",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/system/resched.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/compile/.defs",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/compile/xinu",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/update_iam.py",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/system/chprio.c",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/create_kms_resources.py",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/roles/KMS_roles/trust.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/roles/KMS_roles/sav-pro-kms-decrypt-oars-qa/trust/trust.json",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week2/ex5_changed.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week2/hw2_solution.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week2/Savadel_Christine_Lab1/system/main.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week2/Savadel_Christine_Homework_2/main.c",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/users/manifests/groups/sftp/corp_fdw_sftp_prod.pp",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/IamResources.py",
+		"/Users/csavadel/Desktop/repos/2u/puppet/manifests/content.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/puppet/manifests/master.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/profiles/manifests/sensu/client.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/profiles/manifests/sensu/server.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/profiles/files/sensu/sensu-service",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week2/Savadel_Christine_Lab1/README",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week1/ex5.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week2/main.c",
+		"/Users/csavadel/Desktop/repos/2u/puppet/Puppetfile",
+		"/Users/csavadel/.bash_profile",
+		"/Users/csavadel/.bashrc",
+		"/Users/csavadel/.zshrc",
+		"/Users/csavadel/Desktop/repos/2u/ops-tools/sensu/create_sensu_checks_ansible.sh",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/bast-prod/ReadOnlyAccess-bast-prod-201412231118.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/cont-cms-www-qa/SDB-RO-SDB-QA.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/cont-cms-www-qa/cms-qa-videoencoder.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/cont-cms-www-qa/managed_policies.txt",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/cont-cms-www-stg/managed_policies.txt",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/cont-cms-www-stg/cms-qa-videoencoder.json",
+		"/Users/csavadel/Desktop/repos/2u/ops-tools/sensu/test/test.sh",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week1/ex5solution.c",
+		"/Users/csavadel/Desktop/repos/2u/ops-tools/sensu/sensu_test/test.sh",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/groups/SSO-Content-Producer-L1/SSO-Content-Producer-L1.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/SSO-Content-Producer-L1/SSO-Content-Producer-L1.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/SSO-Content-Producer-L2/SSO-Content-Producer-L2.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/roles/SSO-Content-Producer-L1-Shared/S3-RW-Content-Buckets.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/roles/SSO-Marketing-Producer-Level-1/SSO-Marketing-Producer-L1.json",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/config/Makefile",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/compile/Makefile",
+		"/Users/csavadel/Desktop/repos/2u/ops-tools/user_access/depro_puppet_user.py",
+		"/Users/csavadel/Desktop/repos/2u/ops-tools/user_access/depro_aws_user.py",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week1/test.c",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/corp-tech-ses-prod-nycslfp01/AmazonSesSendingAccess.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/2tor-marketing/AmazonS32tor-marketing-2tor-marketing-201107151506.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/csavadel/test.json",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week1/hw1.c",
+		"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week1/test",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/wu-llm-lms-prod/policygen-wu-llm-lms-prod-20130415.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/usc-msw-lms-prod/usc-msw-lms-prod-2013-04-16.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/usc-mat-lms-prod/usc-mat-lms-prod-2013-04-16.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/unc-mpa-lms-prod/policygen-unc-mpa-lms-prod-20130415.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/unc-mba-lms-prod/unc-mba-lms-prod-2013-04-16.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/ucb-mids-lms-prod/ucb-mids-lms-prod-20130916.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/syr-mba-lms-prod/syr-mba-lms-prod-s3.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/syr-mac-lms-prod/syr-mac-lms-prod.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/smu-mds-lms-prod/s3-smu-mds-lms-prod.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/sc-msw-lms-prod/sc-msw-lms-prod.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/sc-msn-lms-prod/sc-msn-lms-prod-2013-07-12.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/nu-mac-lms-prod/s3-nu-mac-lms-prod.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/gwu-mha-lms-prod/gwu-mha-lms-prod.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/groups/Backup/users.txt",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/gu-msn-lms-prod/gu-msn-lms-prod-2013-04-16.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/au-mba-lms-prod/au-mba-lms-prod.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/corp-son-lms-prod/corp-son-lms-prod-s3.json",
+		"/Users/csavadel/Desktop/repos/2u/puppet/hieradata/component/oars/web.yaml",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/users/usc-msw-lms-prod/s3-rwx.json",
+		"/Users/csavadel/Desktop/repos/2u/ansible2/hosts.yaml",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/kaltura-prod/SDB-Full-cms-domains.json",
+		"/Users/csavadel/.ssh/config",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/groups/Implementations-L1/Implementations-L1-S3.json",
+		"/Users/csavadel/Desktop/repos/2u/rdsark/rdsark/mysql.py",
+		"/Users/csavadel/Desktop/repos/2u/rdsark/rdsark/checksum_compare.py",
+		"/Users/csavadel/Desktop/repos/2u/ansible/run_puppet_stg.yaml",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/profiles/manifests/sensu/uchiwa.pp",
+		"/Users/csavadel/Desktop/repos/2u/ansible/remove_from_etc_hosts.yaml",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/profiles/lib/puppet/parser/functions/getR53set.rb",
+		"/Users/csavadel/Desktop/repos/2u/puppet/hieradata/component/sensu/server.yaml",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/users/manifests/bast_prod.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/users/manifests/bast_stg.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/users/manifests/account.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/users/manifests/init.pp",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/kaltura-prod/S3-RWD-prod-programs.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/groups/nu-mac-api-prod/SDB-nu-mac-api-prod.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/groups/L2-Developers/SDB-All-Access-Prod-Domains.json",
+		"/Users/csavadel/Desktop/repos/2u/rdsark/rdsark/mysql_comparison_new",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/profiles/kaltura-prod",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/requirements.txt",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/resources/managed_policies/AmazonAPIGatewayInvokeFullAccess/policy.json",
+		"/Users/csavadel/Desktop/repos/2u/iam-policies/README.md",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/users/manifests/account/bgalvao.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/profiles/manifests/facts.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/users/manifests/acat_prod.pp",
+		"/Users/csavadel/Desktop/repos/2u/puppet/site/users/manifests/ops.pp",
+		"/Users/csavadel/Desktop/repos/borrowed_hill/sensu/lrs_test.yaml",
+		"/Users/csavadel/Desktop/repos/2u/puppet/manifests/tech-ops.pp",
+		"/Users/csavadel/Desktop/repos/2u/ansible/sensu/custom_sensu_check_commands.yaml"
+	],
+	"find":
+	{
+		"height": 54.0
+	},
+	"find_in_files":
+	{
+		"height": 154.0,
+		"where_history":
+		[
+			"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/xinu",
+			"/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack",
+			"/Users/csavadel/Desktop/repos/2u/puppet",
+			"/Users/csavadel/,/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack/",
+			"/Users/csavadel/,/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack",
+			"/Users/csavadel/",
+			"/Users/csavadel/Desktop/repos/2u/iam-policies",
+			"/Users/csavadel/Desktop/repos/2u/puppet",
+			"<current file>",
+			"/Users/csavadel/Desktop/repos/2u/puppet",
+			"/Users/csavadel/Desktop/repos/2u/iam-policies",
+			"/Users/csavadel/Desktop/repos/2u/puppet",
+			"<current file>",
+			"/Users/csavadel/Desktop/repos/2u/iam-policies",
+			"/Users/csavadel/Desktop/repos/2u/puppet",
+			"/Users/csavadel/Desktop/repos/2u/puppet-cde",
+			"/Users/csavadel/Desktop/repos/2u/puppet",
+			"/Users/csavadel/Desktop/repos/2u/ops-runbook",
+			"/Users/csavadel/Desktop/repos/2u/puppet",
+			"/Users/csavadel/Desktop/repos/2u/puppet-cde",
+			"/Users/csavadel/Desktop/repos/2u/puppet",
+			"<open folders>",
+			"<current file>,<open folders>",
+			"<current file>",
+			"<current file>,<open folders>",
+			"<current file>",
+			"<open folders>,<open files>",
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"dynamic",
+			"dumpp",
+			"main.c",
+			"cpu",
+			"dumpproctab",
+			"dynamic",
+			"dumpproc",
+			"main",
+			"dynamic",
+			"preempt",
+			"quantum",
+			"QUANTUM",
+			"time slice",
+			"quantum",
+			"preempt",
+			"timeslice",
+			"pri16",
+			"dynam",
+			"c",
+			"dumpproctab",
+			"dynamic",
+			"proctab",
+			"dumpproctab.c",
+			"kprintf.c",
+			"NPROC",
+			"proctab",
+			"kprint",
+			"kprintf.c",
+			"kprintf",
+			"krpintf",
+			"read",
+			"KMS_roles",
+			"trust",
+			"resched_cntl",
+			"prprio",
+			"add_profile",
+			"open",
+			".read()",
+			"import_from_files",
+			"jenkins",
+			"cert",
+			"ca",
+			"9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280",
+			"ca-certificates",
+			"nodesource",
+			"Apt::Source[\"nodesource",
+			"Apt::Source['nodesource'",
+			"Apt::Source[nodesource",
+			"apt::source",
+			"security",
+			"resched",
+			"json",
+			"path",
+			"output",
+			"pd_subdomain",
+			"Failure",
+			"put",
+			"sis",
+			"app-sys",
+			"sdb",
+			"2tor-backup",
+			"/opt/2u/etc/.pypirc",
+			"mysql",
+			"keepalive",
+			"knotable",
+			"yu-med",
+			"yu-umt",
+			"corp-bi-segment-prod",
+			"yu-med-lms-dbm-prod",
+			"export",
+			"kms",
+			"data",
+			"mon-pm",
+			"pd_severi",
+			"mon-pm",
+			"exclude_process_checks",
+			"exclude_process_checks'",
+			"mon-pm",
+			"uchiwa::ssl",
+			"localhost",
+			"dir_list",
+			"uchiwa",
+			"restart",
+			"mon-bi",
+			"arn =",
+			"delete_managed",
+			"detach_policy",
+			"purge_resource",
+			"attach_policy",
+			"arn =",
+			"delete_resource",
+			"skip_function",
+			"import_from_iam",
+			"delete_managed_policy",
+			"arn =",
+			"import_managed_policies_from_file",
+			"import_from_file",
+			"update_managed_policy",
+			"update_managed",
+			"create_resource",
+			"create_managed",
+			"create_resource",
+			"create_managed",
+			"create_resource",
+			"arn =",
+			"create_resource",
+			"create_managed_policy",
+			"create_resource",
+			"create_managed_policy",
+			"compare_managed_policy",
+			"create_resource",
+			"warning",
+			"purge_resource",
+			"for",
+			"if",
+			"add_user_to_group",
+			"detach_policy",
+			"attach_policy",
+			"updated",
+			"attach_policy",
+			"component",
+			"print t.green",
+			"update_trust_",
+			"functions =",
+			"functions",
+			"comparing",
+			"arn = ",
+			"arn="
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			":",
+			"include profiles::php::install",
+			"  include profiles::php::install",
+			"  ",
+			"include profiles::php",
+			"  "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/week3/notes",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1821,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1373,
+								1373
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "system/resched.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2003,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								753,
+								753
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 44.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack_Backup/system/initialize.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								420,
+								420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "compile/.vers_num",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2,
+								2
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "compile/version",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 69,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								26,
+								26
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "system/main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								738,
+								738
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 158.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys/Xinu-code-BeagleBoneBlack_Backup/system/main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 548,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								548,
+								548
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 51.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "xinu.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"iam-policies/create_kms_resources.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 273.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

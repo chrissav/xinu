@@ -1,0 +1,66 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/iam-policies"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/puppet"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/ops-tools"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/ansible2"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/ops-runbook"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/puppet-cde"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/highline"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/ansible"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/sensu"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/arsenal"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/2u/rdsark"
+		},
+		{
+			"path": "/Users/csavadel/Desktop/repos/borrowed_hill"
+		},
+		{
+			"path": "/Users/csavadel/Dropbox (2U)/Syracuse/Operating Sys"
+		},
+		{
+			"path": "."
+		}
+	],
+	"SublimeLinter":
+	{
+	    "linters":
+	    {
+	        "clang": {
+	            "include_dirs": [
+	                "${project_folder}/compile",
+	                "${project_folder}/config",
+	                "${project_folder}/cross_compiler",
+	                "${project_folder}/device",
+	                "${project_folder}/include",
+	                "${project_folder}/lib",
+	                "${project_folder}/net",
+	                "${project_folder}/shell",
+	                "${project_folder}/system",
+	            ]
+	        }
+	    }
+	},
+}

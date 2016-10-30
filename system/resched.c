@@ -24,14 +24,23 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 
 	ptold = &proctab[currpid];
 
-	if (ptold->prstate == PR_CURR) {  /* Process remains eligible */
-		if (ptold->prprio > firstkey(readylist)) {
-			return;
-		}
+	/* only switch if it's the null process */
+	if (ptold->prstate == PR_CURR && currpid != 0) {  /* Process remains eligible */
+		return;
+
+		// if (ptold->prprio > firstkey(readylist)) {
+		// 	return;
+		// }
 
 		/* Old process will no longer remain current */
 
+		// ptold->prstate = PR_READY;
+		// insert(currpid, readylist, ptold->prprio);
+	} else {
 		ptold->prstate = PR_READY;
+
+		/* Use enqueue instead? or update insert */
+
 		insert(currpid, readylist, ptold->prprio);
 	}
 
