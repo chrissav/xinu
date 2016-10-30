@@ -33,9 +33,6 @@ void	clkhandler()
 	if(count1000 == 0) {
 		clktime++;
 		count1000 = 1000;
-
-		/* Compute the proctab priorities */
-		dynamicPrio();
 	}
 
 	/* check if sleep queue is empty */

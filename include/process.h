@@ -4,7 +4,7 @@
 
 #ifndef NPROC
 #define	NPROC		8
-#endif
+#endif		
 
 /* Process state constants */
 
@@ -52,8 +52,6 @@ struct procent {		/* Entry in the process table		*/
 	umsg32	prmsg;		/* Message sent to this process		*/
 	bool8	prhasmsg;	/* Nonzero iff msg is valid		*/
 	int16	prdesc[NDESC];	/* Device descriptors for process	*/
-	uint16 malleable;  /*flag to tell whether a process can have dynamic priority */
-	uint16 cpuhog; /* flag gets set when process gets to end of timeslice */
 };
 
 /* Marker for the top of a process stack (used to help detect overflow)	*/

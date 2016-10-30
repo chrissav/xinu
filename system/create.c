@@ -52,10 +52,6 @@ pid32	create(
 	prptr->prparent = (pid32)getpid();
 	prptr->prhasmsg = FALSE;
 
-  /* set malleable and cpuhog default values */
-  prptr->malleable = 0;
-  prptr->cpuhog = 0;
-
 	/* set up initial device descriptors for the shell		*/
 	prptr->prdesc[0] = CONSOLE;	/* stdin  is CONSOLE device	*/
 	prptr->prdesc[1] = CONSOLE;	/* stdout is CONSOLE device	*/

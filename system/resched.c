@@ -26,13 +26,11 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 
 	if (ptold->prstate == PR_CURR) {  /* Process remains eligible */
 		if (ptold->prprio > firstkey(readylist)) {
-			ptold->cpuhog = 2;
 			return;
 		}
 
 		/* Old process will no longer remain current */
 
-		ptold->cpuhog = 0;
 		ptold->prstate = PR_READY;
 		insert(currpid, readylist, ptold->prprio);
 	}
