@@ -7,7 +7,8 @@
  *------------------------------------------------------------------------
  */
 uint32	ptrecv(
-	  int32		portid		/* ID of port to use		*/
+	  int32		portid,		/* ID of port to use		*/
+		uint16 tag 				/* tag for message */
 	)
 {
 	intmask	mask;			/* Saved interrupt mask		*/
@@ -33,13 +34,36 @@ uint32	ptrecv(
 	}
 
 	/* Dequeue first message that is waiting in the port */
+	/* Walk the message list and look for tag number */
 
 	msgnode = ptptr->pthead;
+	while (!(tag == 0 || tag == msgnode->pttag)) {
+		if (msgnode->ptnext != ptptr->pttail) { /* check if it's the last msg */
+			msgnode = msgnode->ptnext;
+		} else { /* msg was not found */
+			//printf("\nmsg not found");
+			sleep(1);
+			//enqueue(currpid,ptptr->tagqueue);/* Enqueue on tag */
+			//uint32 count = semcount(ptptr->tagsem);
+			//ptptr->tagsem = semcreate(1);
+			//printf("\n%d", count);
+			//wait(ptptr->tagsem[tag]);
+			//printf("\ntagsem was signalled");
+			msgnode = ptptr->pthead;
+			//create semaphore
+			//wait on semaphore
+			//delete semaphore
+			//msgnode = ptptr->pthead
+			//restore(mask);
+			//return (uint32)SYSERR;
+		}
+	}
 	msg = msgnode->ptmsg;
 	if (ptptr->pthead == ptptr->pttail)	/* Delete last item	*/
 		ptptr->pthead = ptptr->pttail = NULL;
-	else
+	else {
 		ptptr->pthead = msgnode->ptnext;
+	}
 	msgnode->ptnext = ptfree;		/* Return to free list	*/
 	ptfree = msgnode;
 	signal(ptptr->ptssem);

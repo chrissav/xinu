@@ -34,6 +34,7 @@ syscall	ptcreate(
 			ptptr->ptstate = PT_ALLOC;
 			ptptr->ptssem = semcreate(count);
 			ptptr->ptrsem = semcreate(0);
+			ptptr->tagsem = semcreate(1);
 			ptptr->pthead = ptptr->pttail = NULL;
 			ptptr->ptseq++;
 			ptptr->ptmaxcnt = count;

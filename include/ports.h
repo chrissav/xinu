@@ -9,6 +9,7 @@
 struct	ptnode	{			/* Node on list of messages 	*/
 	uint32	ptmsg;			/* A one-word message		*/
 	struct	ptnode	*ptnext;	/* Pointer to next node on list	*/
+	uint16  pttag; /* tag for message */
 };
 
 struct	ptentry	{			/* Entry in the port table	*/
@@ -19,6 +20,8 @@ struct	ptentry	{			/* Entry in the port table	*/
 	int32	ptseq;			/* Sequence changed at creation	*/
 	struct	ptnode	*pthead;	/* List of message pointers	*/
 	struct	ptnode	*pttail;	/* Tail of message list		*/
+	sid32 tagsem;
+	qid16	tagqueue;
 };
 
 extern	struct	ptnode	*ptfree;	/* List of free nodes		*/

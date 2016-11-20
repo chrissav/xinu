@@ -8,7 +8,8 @@
  */
 syscall	ptsend(
 	  int32		portid,		/* ID of port to use		*/
-	  umsg32	msg		/* Message to send		*/
+	  umsg32	msg,		/* Message to send		*/
+		uint16  tag /* tag for message */
 	)
 {
 	intmask	mask;			/* Saved interrupt mask		*/
@@ -43,6 +44,7 @@ syscall	ptsend(
 	ptfree  = msgnode->ptnext;	/* Unlink from the free list	*/
 	msgnode->ptnext = NULL;		/* Set fields in the node	*/
 	msgnode->ptmsg  = msg;
+	msgnode->pttag = tag;
 
 	/* Link into queue for the specified port */
 
@@ -54,6 +56,11 @@ syscall	ptsend(
 		ptptr->pttail = msgnode;
 	}
 	signal(ptptr->ptrsem);
+	// if ( tag != 0 ){
+	// 	if (semcount(ptptr->tagsem[tag]) <= 0) {
+	// 		signal(ptptr->tagsem[tag]);
+	// 	}
+	// }
 	restore(mask);
 	return OK;
 }
