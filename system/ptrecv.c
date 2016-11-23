@@ -41,21 +41,15 @@ uint32	ptrecv(
 		if (msgnode->ptnext != ptptr->pttail) { /* check if it's the last msg */
 			msgnode = msgnode->ptnext;
 		} else { /* msg was not found */
-			//printf("\nmsg not found");
-			sleep(1);
-			//enqueue(currpid,ptptr->tagqueue);/* Enqueue on tag */
-			//uint32 count = semcount(ptptr->tagsem);
-			//ptptr->tagsem = semcreate(1);
-			//printf("\n%d", count);
-			//wait(ptptr->tagsem[tag]);
-			//printf("\ntagsem was signalled");
+			/* create new semaphore */
+			sid32 sem = semcreate(0);
+			/* enqueue semaphore into this tag's queue, and wait */
+			enqueue(sem, tag);
+			wait(sem);
+			/* delete semaphore when process returns (won't use it again) */
+			semdelete(sem);
+			/* start at the beginning of the message list */
 			msgnode = ptptr->pthead;
-			//create semaphore
-			//wait on semaphore
-			//delete semaphore
-			//msgnode = ptptr->pthead
-			//restore(mask);
-			//return (uint32)SYSERR;
 		}
 	}
 	msg = msgnode->ptmsg;

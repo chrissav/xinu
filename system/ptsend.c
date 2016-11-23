@@ -44,6 +44,8 @@ syscall	ptsend(
 	ptfree  = msgnode->ptnext;	/* Unlink from the free list	*/
 	msgnode->ptnext = NULL;		/* Set fields in the node	*/
 	msgnode->ptmsg  = msg;
+
+	/* add tag to msg */
 	msgnode->pttag = tag;
 
 	/* Link into queue for the specified port */
@@ -56,11 +58,8 @@ syscall	ptsend(
 		ptptr->pttail = msgnode;
 	}
 	signal(ptptr->ptrsem);
-	// if ( tag != 0 ){
-	// 	if (semcount(ptptr->tagsem[tag]) <= 0) {
-	// 		signal(ptptr->tagsem[tag]);
-	// 	}
-	// }
+	/* signal the tag semaphore */
+	signal(dequeue(tag));
 	restore(mask);
 	return OK;
 }
