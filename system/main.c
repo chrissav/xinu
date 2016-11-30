@@ -10,11 +10,13 @@ uint32 add_callout(uint32, void *, void *);
 uint32 remove_callout(uint32);
 void callout_process();
 
+/* struct for test function */
 struct print_args {
   uint32 num1;
   uint32 num2;
 };
 
+/* struct for callout items to be queued */
 struct callout {
   uint32  time;
   void    (*funcaddr)(void *);
@@ -24,11 +26,8 @@ struct callout {
   struct  callout *qprev;    /* Index of previous callout or head  */
 };
 
-struct callout *cahead = NULL;
-struct callout *catail = NULL;
-uint32 cid = 0;
-
-/* extern struct callout cqueue[]; */
+struct callout *cahead = NULL; /* head of the callout queue */
+uint32 cid = 0; /* keep track of cid used */
 
 /*------------------------------------------------------------------------
 * Main - Create processes
@@ -37,10 +36,10 @@ uint32 cid = 0;
 
 process main(void) {
   printf("\nstarting main");
-  //init_calloutq();
 
-  //resume(create(callout_process, 1024, 20, "run_callouts", 0));
+  resume(create(callout_process, 1024, 20, "run_callouts", 0));
 
+  /* create tests */
   struct print_args a;
   a.num1 = 1;
   a.num2 = 2;
@@ -57,11 +56,15 @@ process main(void) {
   d.num1 = 15;
   d.num2 = 16;
 
-  add_callout(15, callout_print, &a);
+  void (*func)(struct print_args *argp);
+  func = &callout_print;
+
+  add_callout(15, func, &a);
   add_callout(8, callout_print, &b);
   add_callout(10, callout_print, &c);
   add_callout(4, callout_print, &d);
 
+  /* run process to print current list */
   resume(create(print_list, 1024, 20, "print_list", 0));
 }
 
@@ -73,14 +76,10 @@ process main(void) {
 
 void callout_process() {
   while(1){
-    sleep(2);
+    sleep(2); /* wait a little for output */
     printf("\nrunning callout");
     run_callouts();
   }
-}
-
-void callout_print(struct print_args *argp) {
-  printf("num1 is %d, num2 is %d", argp->num1, argp->num2);
 }
 
 /*------------------------------------------------------------------------
@@ -88,14 +87,10 @@ void callout_print(struct print_args *argp) {
 *------------------------------------------------------------------------
 */
 
-// void init_calloutq(){
-//   printf("\ncreating queue");
-//   cahead->qnext = catail;
-//   cahead->qprev = NULL;
-//   catail->qprev = cahead;
-//   catail->qnext = NULL;
-//   printf("\nfinished creating queue");
-// }
+void callout_print(struct print_args *argp) {
+  printf("\nRunning the print func");
+  printf("\nnum1 is %d, num2 is %d", argp->num1, argp->num2);
+}
 
 //print the callout list
 void print_list() {
@@ -118,35 +113,27 @@ uint32 add_callout(uint32 msdelay, void *funcaddr, void *argp) {
   printf("\n\n adding callout");
   struct callout link;
   struct callout *current = cahead;
+  struct print_args *pri = (struct print_args *) argp;
 
   /* add data to callout node */
   link.time = msdelay;
   link.funcaddr = funcaddr;
-  link.argp = argp;
+  link.argp = pri;
   link.cid = cid++;
-  sleep(1);
 
-  printf("\n update pointers. ");
+  /* add link to the queue */
   if (current == NULL){
-    printf("current is null");
     cahead = &link; /* set link as first node */
   } else {
-    printf("current is not null");
-    printf("link time is %d", link.time);
-    printf("current time is %d", current->time);
     while (current->qnext != NULL && link.time <= current->time) { /* find where to add callout */
-      printf("\n incrementing current to next node");
       current = current->qnext;
-      printf("\n updating link time");
       link.time -= current->time;
     }
     if (current->qnext != NULL){ /* not the last item in the list */
-      printf("\n update pointers for next item");
       struct callout *next = current->qnext;
       link.qnext = next;
       next->qprev = &link;
     }
-    printf("update remaining pointers");
     current->qnext = &link;
     link.qprev = current;
   }
@@ -154,21 +141,22 @@ uint32 add_callout(uint32 msdelay, void *funcaddr, void *argp) {
 }
 
 uint32 remove_callout(uint32 cid) {
-  struct callout* current = cahead;
+  printf("\n\nremoving callout");
+  struct callout *current = cahead;
 
-  if(cahead->qnext == catail) {
+  if(current == NULL) {
     return SYSERR; /* no items in the list */
   }
 
   while(cid != current->cid) {
-    if (current->qnext != catail) { /* check if it's the last msg */
+    if (current->qnext != NULL) { /* check if it's the last msg */
       current = current->qnext;
     } else {
       return SYSERR; /* cid was not found in the callout queue */
     }
   }
 
-  /* remove the callout node */
+  /* remove the found callout node */
   struct callout *next = current->qnext; /* Following node in list */
   struct callout *prev = current->qprev; /* Previous node in list  */
   prev->qnext = next;
@@ -177,11 +165,9 @@ uint32 remove_callout(uint32 cid) {
 }
 
 void run_callouts(){
-  struct callout* current = cahead;
-
-  if(current->qnext != catail) { /* if calloutq is not empty */
-    current = current->qnext;
-    sleep(current->time);
+  struct callout *current = cahead;
+  if(current != NULL) { /* if calloutq is not empty */
+    sleep(current->time); /* sleep for function delay of first item */
     current->funcaddr(current->argp); /* call the function waiting */
     remove_callout(current->cid);
   }
